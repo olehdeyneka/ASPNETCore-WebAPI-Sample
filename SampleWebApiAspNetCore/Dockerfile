@@ -9,9 +9,10 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["SampleWebApiAspNetCore.csproj", "SampleWebApiAspNetCore/"]
 RUN dotnet restore "SampleWebApiAspNetCore/SampleWebApiAspNetCore.csproj"
+
+WORKDIR "/src/SampleWebApiAspNetCore"
 COPY . .
-WORKDIR "/src"
-RUN dotnet build "SampleWebApiAspNetCore/SampleWebApiAspNetCore.csproj" -c Release -o /app/build
+RUN dotnet build "SampleWebApiAspNetCore.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "SampleWebApiAspNetCore.csproj" -c Release -o /app/publish
