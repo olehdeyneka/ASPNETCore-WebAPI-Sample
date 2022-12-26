@@ -10,8 +10,8 @@ WORKDIR /src
 COPY ["SampleWebApiAspNetCore.csproj", "SampleWebApiAspNetCore/"]
 RUN dotnet restore "SampleWebApiAspNetCore/SampleWebApiAspNetCore.csproj"
 COPY . .
-WORKDIR "/src/SampleWebApiAspNetCore"
-RUN dotnet build "SampleWebApiAspNetCore.csproj" -c Release -o /app/build
+WORKDIR "/src"
+RUN dotnet build "SampleWebApiAspNetCore/SampleWebApiAspNetCore.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "SampleWebApiAspNetCore.csproj" -c Release -o /app/publish
