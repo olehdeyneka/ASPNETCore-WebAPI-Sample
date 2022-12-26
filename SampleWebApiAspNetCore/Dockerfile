@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["SampleWebApiAspNetCore/SampleWebApiAspNetCore.csproj", "SampleWebApiAspNetCore/"]
-RUN dotnet restore "SampleWebApiAspNetCore/SampleWebApiAspNetCore.csproj"
+COPY ["SampleWebApiAspNetCore.csproj", "SampleWebApiAspNetCore/"]
+RUN dotnet restore "SampleWebApiAspNetCore.csproj"
 COPY . .
 WORKDIR "/src/SampleWebApiAspNetCore"
 RUN dotnet build "SampleWebApiAspNetCore.csproj" -c Release -o /app/build
