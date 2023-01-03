@@ -37,7 +37,7 @@ jobs:
           push: true
           tags: crunivisia.azurecr.io/capp-oleh:${{ github.sha }}
           file: /SampleWebApiAspNetCore/Dockerfile
-          context: /SampleWebApiAspNetCore/
+          context: .
 
 
   deploy:
